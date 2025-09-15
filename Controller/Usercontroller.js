@@ -1,5 +1,5 @@
 import usermodel from "../Model/Usermodel.js";
-import todomodel from "../Model/TodoModel.js";
+import todomodel from "../Model/Todomodel.js";
 import jsonwebtoken from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
