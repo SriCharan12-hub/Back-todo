@@ -18,7 +18,7 @@ const port = process.env.PORT
 const mongo_uri= process.env.MONGO_URI
 async function connection() {
     try{
-        connect(mongo_uri)
+        await connect(mongo_uri)
         app.listen(port,()=>{console.log("server running on 8000")})
     }
     catch{
