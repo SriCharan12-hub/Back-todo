@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-export  default function connect (mongo_uri) {
+export  default async function connect (mongo_uri) {
     try{
-        mongoose.connect(mongo_uri)
+        await mongoose.connect(mongo_uri)
         console.log("mongoDB connected successfully")
 
     }
