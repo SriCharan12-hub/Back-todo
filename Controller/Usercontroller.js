@@ -1,5 +1,5 @@
 import usermodel from "../Model/Usermodel.js";
-import Todomodel from "../Model/TodoModel.js";
+import todomodel from "../Model/TodoModel.js";
 import jsonwebtoken from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
@@ -84,7 +84,7 @@ export const todoadd = async (req, res) => {
     if (!text) {
       return res.status(400).json({ message: "Task text is required" });
     }
-    const newTodo = new Todomodel({
+    const newTodo = new todomodel({
       text,
       user: userId,
     });
@@ -100,7 +100,7 @@ export const todoadd = async (req, res) => {
 export const todoget = async (req, res) => {
   try {
     const userId = req.user.id;
-    const todos = await Todomodel.find({ user: userId });
+    const todos = await todomodel.find({ user: userId });
     res.status(200).json({ message: "Tasks fetched successfully", result: todos });
   } catch (err) {
     console.error("Error fetching todos:", err);
@@ -115,7 +115,7 @@ export const todoupdate = async (req, res) => {
     const userId = req.user.id;
     const { text, completed } = req.body;
 
-    const updatedTodo = await Todomodel.findOneAndUpdate(
+    const updatedTodo = await todomodel.findOneAndUpdate(
       { _id: id, user: userId },
       { text, completed },
       { new: true }
@@ -137,7 +137,7 @@ export const tododelete = async (req, res) => {
     const { id } = req.params;
     const userId = req.user.id;
 
-    const deletedTodo = await Todomodel.findOneAndDelete({ _id: id, user: userId });
+    const deletedTodo = await todomodel.findOneAndDelete({ _id: id, user: userId });
 
     if (!deletedTodo) {
       return res.status(404).json({ message: "Task not found or user not authorized" });

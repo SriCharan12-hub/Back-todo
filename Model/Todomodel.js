@@ -17,5 +17,5 @@ const todoSchema = new mongoose.Schema({
     },
 });
 
-const Todomodel = mongoose.model("Todo", todoSchema, "TodoTasks");
-export default Todomodel;
+const todomodel = mongoose.model("Todo", todoSchema, "TodoTasks");
+export default todomodel;
